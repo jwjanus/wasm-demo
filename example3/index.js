@@ -1,6 +1,4 @@
-const [node1] = ["p"]
-  .map(tag => document.createElement(tag))
-  .map(node => document.body.appendChild(node));
+const node = appendDOMNode("p");
 
 const bytes = `
     00 61 73 6d 01 00 00 00 01 07 01 60 02 7f 7f 01 
@@ -17,5 +15,5 @@ WebAssembly.compile(buff).then(mod => {
   const {
     exports: { add }
   } = new WebAssembly.Instance(mod);
-  node1.innerHTML = add(41, 1);
+  node.innerHTML = add(41, 1);
 });
